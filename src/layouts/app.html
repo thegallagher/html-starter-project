@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><block name="title"></block></title>
+
+    <!-- Add vendor/plugin styles here -->
+    <!-- eg: <link href="assets/vendor/plugin-name/plugin-style.css" rel="stylesheet"> -->
+
+    <!-- jQuery is copied automatically to assets/vendor  -->
+    <script src="assets/vendor/jquery.js"></script>
+
+    <!-- Webpack styles will be added automatically here -->
+</head>
+
+<body>
+
+<div class="wrapper">
+    <include src="header.html"></include>
+
+    <main class="main">
+        <block name="content"></block>
+    </main>
+
+    <include src="footer.html"></include>
+</div><!-- /.wrapper -->
+
+<!-- Add vendor/plugin scripts here -->
+<!-- eg: <script src="assets/vendor/plugin-name/plugin-script.js"></script> -->
+
+<!-- Webpack scripts will be added automatically here -->
+</body>
+</html>
