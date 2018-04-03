@@ -2,6 +2,8 @@ const Encore = require('@symfony/webpack-encore');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const argv = require('yargs').argv;
+const env = argv.env || {};
 
 Encore
     // the project directory where all compiled assets will be stored
@@ -10,9 +12,18 @@ Encore
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
 
+    // Simplify manifest key
+    .setManifestKeyPrefix('')
+
     // will create public/build/app.js and public/build/app.css
     .addEntry('assets/scripts/app', './src/assets/scripts/app.js')
     .addStyleEntry('assets/styles/app', './src/assets/styles/app.scss')
+
+    // put images and fonts in the assets subdirectory
+    .configureFilenames({
+        images: 'assets/images/[name].[hash:8].[ext]',
+        fonts: 'assets/fonts/[name].[hash:8].[ext]',
+    })
 
     // allow sass/scss files to be processed
     .enableSassLoader(function(sassOptions) {
@@ -32,7 +43,7 @@ Encore
     .cleanupOutputBeforeBuild()
 
     // show OS notifications when builds finish/fail
-    .enableBuildNotifications()
+    .enableBuildNotifications(!Encore.isProduction())
 
     // create hashed filenames (e.g. app.abc123.css)
     .enableVersioning()
@@ -77,6 +88,16 @@ glob.sync('./src/*.html').forEach((file) => {
         filename: file.split('/').pop(),
     }))
 });
+
+// Override output path from command line
+if ('outputPath' in env) {
+    Encore.setOutputPath(argv.env.outputPath);
+}
+
+// Override public path from command line
+if ('publicPath' in env) {
+    Encore.setPublicPath(argv.env.publicPath);
+}
 
 // export the final configuration
 module.exports = Encore.getWebpackConfig();

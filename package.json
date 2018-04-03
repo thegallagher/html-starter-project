@@ -20,6 +20,7 @@
     "posthtml-include": "^1.1.0",
     "posthtml-loader": "^1.0.1",
     "sass-loader": "^6.0.7",
-    "webpack-notifier": "^1.6.0"
+    "webpack-notifier": "^1.6.0",
+    "yargs": "^11.0.0"
   }
 }
