@@ -1,0 +1,17 @@
+pipeline:
+  build:
+    image: thegallagher/build-image
+    commands:
+      - yarn install
+      - yarn run encore production --env.publicPath=/
+
+  deploy:
+    image: drillster/drone-rsync
+    hosts: [ "${DEPLOY_HOST}" ]
+    user: ${DEPLOY_USER=deploy}
+    key: ${DEPLOY_KEY}
+    source: ./build/
+    target: ${DEPLOY_PATH}
+    exclude: [ ".git", "node_modules" ]
+
+branches: master

@@ -81,3 +81,17 @@ All of these changes make the size of Bootstrap smaller and easier to customise.
         ├── layouts/     # HTML layouts / templates
         └── partials/    # HTML partials
 
+## Drone Deployment
+If you have a Drone server, you can setup automatic deployment. Use the following commands to
+configure Drone for your setup (replacing strings in square brackets with your config):
+
+    drone secret add --skip-verify --conceal --image drillster/drone-rsync [yourname/yourrepo] DEPLOY_KEY @[/local/path/to/your/deploy/key]
+    # eg: drone secret add --skip-verify --conceal --image drillster/drone-rsync thegallagher/myrepo DEPLOY_KEY @/home/david/.ssh/deploy_key
+    
+    drone secret add --skip-verify [yourname/yourrepo] DEPLOY_HOST [yourhost.com]
+    # eg: drone secret add --skip-verify thegallagher/myrepo DEPLOY_HOST 'mysite.com'
+    
+    drone secret add --skip-verify [yourname/yourrepo] DEPLOY_PATH [/path/on/your/server]
+    # eg: drone secret add --skip-verify thegallagher/myrepo DEPLOY_PATH '/var/www/sites/mysite.com'
+   
+   
