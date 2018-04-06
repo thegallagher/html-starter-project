@@ -28,7 +28,7 @@ To build assets, run:
     yarn run encore dev
 
 
-### PostHTML Extend and Include
+### PostHTML "Extend" and "Include" plugins
 
 Documentation:  
 https://github.com/posthtml/posthtml-extend  
@@ -36,11 +36,21 @@ https://github.com/posthtml/posthtml-include
 
 These two packages allow some structure and reuse in your HTML code.
 
-Extend allows you to create templates or "layouts" for your HTML.
-See `src/layouts/app.html` for an example.
+The **"Extend"** plugin allows you to create templates or "layouts" for your HTML.
+Layouts live in the `src/layouts/` directory.
 
-Include allows you to use code fragments or "partials" in your HTML code, similar to Server Side Includes.
-See `src/index.html` and `src/partials` for examples on how these work.
+See `src/index.html` and `src/layouts/app.html` for more examples on how this works.
+The [plugin documentation](https://github.com/posthtml/posthtml-extend) also contains good examples
+of how it works.
+
+The **"Include"** plugin allows you to use code fragments or "partials" in your HTML code.
+Partials live in the `src/partials/` directory.
+
+You can include a partial (for eg. `src/partial/header.html`) with:
+
+    <include src="header.html"></include>
+
+See `src/index.html` and `src/partials/` for more examples on how this works.
 
 ### Bootstrap 4
 Documentation: http://getbootstrap.com
