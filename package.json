@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "David Gallagher",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
     "@symfony/webpack-encore": "^0.19.0",
