@@ -21,8 +21,8 @@ Encore
 
     // put images and fonts in the assets subdirectory
     .configureFilenames({
-        images: 'assets/images/[name].[hash:8].[ext]',
-        fonts: 'assets/fonts/[name].[hash:8].[ext]',
+        images: Encore.isProduction() ? 'assets/images/[name].[hash:8].[ext]' : 'assets/images/[name].[ext]',
+        fonts: Encore.isProduction() ? 'assets/fonts/[name].[hash:8].[ext]' : 'assets/fonts/[name].[ext]',
     })
 
     // allow sass/scss files to be processed
