@@ -12,6 +12,35 @@ You'll just need to clone this repository. If you are starting a new project, us
 Finally, change to the project directory, install the required packages and build the project
 
     yarn install && yarn run encore dev
+    
+## Building
+
+To build your website, run:
+
+    yarn run encore [dev|production] # dev for development, production on for production
+
+By default the public path is `/build` for development and `/` for production.
+If you need to change the public path, you can use the `--env.publicPath` parameter. eg:
+
+    yarn run encore dev --env.publicPath=/project-name/build
+    
+Additionally, you can change the output path with the `--env.publicPath` parameter. eg:
+
+    yarn run encore production --env.outputPath=/var/www/sites/mysite.com
+    
+## Watch
+
+To automatically recompile your assets when they change:
+
+    yarn run encore dev --watch
+    
+## Dev server
+
+Start dev server. Default link is http://localhost:8080/
+
+For more options, see: https://symfony.com/doc/master/frontend/encore/dev-server.html
+
+    yarn run encore dev-server
 
 ## Included packages
 
@@ -93,5 +122,3 @@ configure Drone for your setup (replacing strings in square brackets with your c
     
     drone secret add --skip-verify [yourname/yourrepo] DEPLOY_PATH [/path/on/your/server]
     # eg: drone secret add --skip-verify thegallagher/myrepo DEPLOY_PATH '/var/www/sites/mysite.com'
-   
-   
