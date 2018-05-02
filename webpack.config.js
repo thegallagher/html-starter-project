@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const argv = require('yargs').argv;
 const env = argv.env || {};
+const context = require('@symfony/webpack-encore/lib/context');
 
 Encore
     // the project directory where all compiled assets will be stored
@@ -97,6 +98,8 @@ if ('outputPath' in env) {
 // Override public path from command line
 if ('publicPath' in env) {
     Encore.setPublicPath(argv.env.publicPath);
+} else if (context.runtimeConfig.useDevServer) {
+    Encore.setPublicPath('/');
 }
 
 // export the final configuration
