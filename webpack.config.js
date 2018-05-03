@@ -6,6 +6,11 @@ const argv = require('yargs').argv;
 const env = argv.env || {};
 const context = require('@symfony/webpack-encore/lib/context');
 
+let srcPath = './src';
+if ('srcPath' in env) {
+    srcPath = env.srcPath;
+}
+
 Encore
     // the project directory where all compiled assets will be stored
     .setOutputPath('build/')
@@ -17,8 +22,8 @@ Encore
     .setManifestKeyPrefix('')
 
     // will create public/build/app.js and public/build/app.css
-    .addEntry('assets/scripts/app', './src/assets/scripts/app.js')
-    .addStyleEntry('assets/styles/app', './src/assets/styles/app.scss')
+    .addEntry('assets/scripts/app', srcPath + '/assets/scripts/app.js')
+    .addStyleEntry('assets/styles/app', srcPath + '/assets/styles/app.scss')
 
     // put images and fonts in the assets subdirectory
     .configureFilenames({
@@ -59,10 +64,10 @@ Encore
                 options: {
                     plugins: [
                         require('posthtml-extend')({
-                            root: './src/layouts'
+                            root: srcPath + '/layouts'
                         }),
                         require('posthtml-include')({
-                            root: './src/partials'
+                            root: srcPath + '/partials'
                         })
                     ]
                 }
@@ -78,12 +83,12 @@ Encore
             to: './assets/vendor/jquery.js'
         },
         // vendor assets
-        { from: './src/assets/vendor', to: './assets/vendor' },
+        { from: srcPath + '/assets/vendor', to: './assets/vendor' },
     ]))
 ;
 
 // Add entry points for all html files in the root of src
-glob.sync('./src/*.html').forEach((file) => {
+glob.sync(srcPath + '/*.html').forEach((file) => {
     Encore.addPlugin(new HtmlWebpackPlugin({
         template: file,
         filename: file.split('/').pop(),
@@ -102,5 +107,10 @@ if ('publicPath' in env) {
     Encore.setPublicPath('/');
 }
 
+let config = Encore.getWebpackConfig();
+
+//console.log(config.devServer);
+config.devServer.watchOptions.poll = true;
+
 // export the final configuration
-module.exports = Encore.getWebpackConfig();
+module.exports = config;

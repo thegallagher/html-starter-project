@@ -82,6 +82,7 @@ You can include a partial (for eg. `src/partial/header.html`) with:
 See `src/index.html` and `src/partials/` for more examples on how this works.
 
 ### Bootstrap 4
+
 Documentation: http://getbootstrap.com
 
 Feel free to use as much or as little of Bootstrap as you want.
@@ -111,6 +112,7 @@ All of these changes make the size of Bootstrap smaller and easier to customise.
         └── partials/    # HTML partials
 
 ## Drone Deployment
+
 If you have a Drone server, you can setup automatic deployment. Use the following commands to
 configure Drone for your setup (replacing strings in square brackets with your config):
 
@@ -122,3 +124,9 @@ configure Drone for your setup (replacing strings in square brackets with your c
     
     drone secret add --skip-verify [yourname/yourrepo] DEPLOY_PATH [/path/on/your/server]
     # eg: drone secret add --skip-verify thegallagher/myrepo DEPLOY_PATH '/var/www/sites/mysite.com'
+    
+## Testing
+
+For development of this package, you can test using:
+
+    yarn run encore dev-server --env.srcPath='./test' --env.outputPath='./test-build' --env.publicPath='/'

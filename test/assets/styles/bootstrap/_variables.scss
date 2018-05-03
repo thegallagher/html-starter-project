@@ -1,0 +1,30 @@
+// Bootstrap Options
+$enable-caret:              true;
+$enable-rounded:            false;
+$enable-shadows:            false;
+$enable-gradients:          false;
+$enable-transitions:        true;
+$enable-grid-classes:       false;
+$enable-containers:         true;
+$enable-print-styles:       false;
+
+// Grid options
+$grid-columns:                12;
+$grid-gutter-width:           30px;
+
+// Grid breakpoints
+$grid-breakpoints: (
+        xs: 0,
+  //sm: 576px,
+  //md: 768px,
+        lg: 992px,
+        xl: 1200px
+);
+
+// Grid containers
+$container-max-widths: (
+  //sm: 540px,
+  //md: 720px,
+        lg: 960px,
+        xl: 1140px
+);
