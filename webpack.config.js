@@ -36,6 +36,9 @@ Encore
         sassOptions.precision = 10;
     })
 
+    // Enable Autoprefixer
+    .enablePostCssLoader()
+
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
 
