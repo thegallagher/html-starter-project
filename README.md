@@ -40,7 +40,7 @@ Start dev server. Default link is http://localhost:8080/
 
 For more options, see: https://symfony.com/doc/master/frontend/encore/dev-server.html
 
-    yarn run encore dev-server
+    yarn run encore dev-server --open
 
 ## Included packages
 
@@ -129,4 +129,4 @@ configure Drone for your setup (replacing strings in square brackets with your c
 
 For development of this package, you can test using:
 
-    yarn run encore dev-server --env.srcPath='./test' --env.outputPath='./test-build' --env.publicPath='/'
+    yarn run encore dev-server --env.srcPath='./test' --env.outputPath='./test-build' --env.publicPath='/' --open
