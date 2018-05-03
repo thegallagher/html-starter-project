@@ -107,10 +107,5 @@ if ('publicPath' in env) {
     Encore.setPublicPath('/');
 }
 
-let config = Encore.getWebpackConfig();
-
-//console.log(config.devServer);
-config.devServer.watchOptions.poll = true;
-
 // export the final configuration
-module.exports = config;
+module.exports = Encore.getWebpackConfig();
